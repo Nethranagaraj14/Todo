@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-image: url(https://galtronics.com/wp-content/uploads/2017/03/Career-Compass-Galtronics-Inc.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .heading{
+        text-align: center;
+        color: rgb(159, 117, 117) ;
+        font-family: monospace;
+    }
+
+    .container{
+        background-color:  rgb(165, 145, 145);
+        opacity: 0.8;
+        margin: auto;
+        width: 60%;
+        height: 500px;
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 20px;
+
+    }
+    
+    .input{
+        width: 300px;
+        height: 30px;
+    }
+
+    .btn{
+        width: 100px;
+        height: 30px;
+        margin-left: 20px;
+        color: rgb(159, 117, 117);
+        font-family: monospace;
+        font-size: larger;
+    }
+
+
+    
+</style>
+<body>
+    <h1 class="heading">Add your steps to success!</h1>
+    <center>
+    <input id="input" class="input" type="text">
+    <button onclick="add()" class="btn">Add task</button>
+    </center>
+    
+        <div class="container">
+        <ul id="unordered_list">
+          
+
+        </ul>
+        </div>
+    
+    <script>
+       
+
+        function add(){
+            var input = document.getElementById("input");
+            var ul = document.getElementById("unordered_list");
+            var listitem = document.createElement("li");
+            var button = document.createElement("button");
+            button.textContent = "Finished";
+            button.id = "dbtn"; // Assign an ID to the button
+            button.onclick = function(event) {
+                deletion(event);
+                
+            };
+        
+            // Apply CSS styles directly to the button
+            button.style.width = "100px";
+            button.style.height = "30px";
+            button.style.marginLeft = "500px";
+            button.style.color = "rgb(159, 117, 117)";
+            button.style.fontFamily = "monospace";
+            button.style.fontSize = "larger";
+            button.style.marginTop = "30px"
+
+        
+            listitem.innerHTML = input.value;
+            listitem.appendChild(button);
+            ul.append(listitem);
+            listitem.style.fontFamily = "Lucida Console", "Courier New";
+            listitem.style.color = "white";
+            listitem.style.fontSize = "larger";
+
+            checkTasks();
+        
+        }
+
+        function deletion(event){
+            event.target.parentElement.remove();
+            checkTasks(); 
+
+        }
+
+        function checkTasks() {
+            var ul = document.getElementById("unordered_list");
+            // Check if there are no more tasks remaining
+            if (ul.children.length === 0) {
+                alert("Congratulations! You've completed all tasks.");
+            }
+        }
+
+
+    </script>
+</body>
+</html>
